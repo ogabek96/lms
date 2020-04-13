@@ -29,5 +29,8 @@
   },
   "_moduleAliases": {
     "@repository": "src/repository"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
