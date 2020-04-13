@@ -11,7 +11,13 @@ const app = express();
 
 /** Connecting to mongo db */
 mongoose.connect(process.env.MONGODB_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 5000 });
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000,
+  });
 
 mongoose.connection.on('error', (error) => {
   console.error('Error in connecting to mongodb.', error);
