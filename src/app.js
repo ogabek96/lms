@@ -1,5 +1,6 @@
 require('module-alias/register');
 const express = require('express');
+const chalk = require('chalk');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -30,6 +31,12 @@ mongoose.connection.once('open', () => {
 
 /** Public assets */
 app.use('/static', express.static(`${__dirname}/public`));
+
+/** Logger */
+app.use((req, res, next) => {
+  console.log(`${chalk.green(req.method)} - ${req.path}`);
+  next();
+});
 
 /** Set ejs view engine */
 app.set('views', `${__dirname}/views`);
